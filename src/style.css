@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   CSS 自定义属性 — 浅色 / 深色模式主题
+   ============================================ */
+:root {
+  --color-bg: #f5f5f7;
+  --color-bg-elevated: rgba(255, 255, 255, 0.72);
+  --color-bg-card: rgba(255, 255, 255, 0.64);
+  --color-text: #1d1d1f;
+  --color-text-secondary: #6e6e73;
+  --color-text-tertiary: #86868b;
+  --color-border: rgba(0, 0, 0, 0.08);
+  --color-shadow: rgba(0, 0, 0, 0.06);
+  --color-shadow-hover: rgba(0, 0, 0, 0.12);
+  --color-accent-start: #3B82F6;
+  --color-accent-end: #8B5CF6;
+  --color-nav-bg: rgba(245, 245, 247, 0.72);
+  --color-hero-dot: rgba(59, 130, 246, 0.08);
+}
+
+.dark {
+  --color-bg: #1d1d1f;
+  --color-bg-elevated: rgba(44, 44, 46, 0.72);
+  --color-bg-card: rgba(44, 44, 46, 0.64);
+  --color-text: #f5f5f7;
+  --color-text-secondary: #a1a1a6;
+  --color-text-tertiary: #6e6e73;
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-shadow: rgba(0, 0, 0, 0.3);
+  --color-shadow-hover: rgba(0, 0, 0, 0.5);
+  --color-nav-bg: rgba(29, 29, 31, 0.72);
+  --color-hero-dot: rgba(139, 92, 246, 0.12);
+}
+
+/* ============================================
+   全局基础样式
+   ============================================ */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* 偏移量，避免 fixed navbar 遮挡锚点 */
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text',
+    'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', Arial, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ============================================
+   Glass 磨砂玻璃组件样式
+   ============================================ */
+@layer components {
+  /* 磨砂玻璃卡片 */
+  .glass-card {
+    background: var(--color-bg-card);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--color-border);
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 24px var(--color-shadow);
+    transition: transform 0.35s cubic-bezier(0.25, 0.1, 0.25, 1),
+                box-shadow 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+
+  .glass-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px var(--color-shadow-hover);
+  }
+
+  /* 磨砂玻璃导航栏 */
+  .glass-nav {
+    background: var(--color-nav-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid var(--color-border);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+
+  /* 渐变文字 */
+  .gradient-text {
+    background: linear-gradient(135deg, var(--color-accent-start), var(--color-accent-end));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* 渐变按钮 */
+  .btn-gradient {
+    background: linear-gradient(135deg, var(--color-accent-start), var(--color-accent-end));
+    color: #fff;
+    border-radius: 9999px;
+    padding: 0.625rem 1.75rem;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 12px rgba(59, 130, 246, 0.3);
+  }
+
+  .btn-gradient:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+  }
+
+  /* 滚动渐入动画基础 */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s cubic-bezier(0.25, 0.1, 0.25, 1),
+                transform 0.7s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* 评论风格底部文字 */
+  .comment-text {
+    color: var(--color-text-tertiary);
+    font-family: 'SF Mono', 'Fira Code', 'Fira Mono', Menlo, Consolas, monospace;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+  }
+}
+
+/* ============================================
+   自定义滚动条
+   ============================================ */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ============================================
+   Hero 网格背景装饰
+   ============================================ */
+.hero-bg {
+  background-image: radial-gradient(circle, var(--color-hero-dot) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* 选中文字颜色 */
+::selection {
+  background: rgba(59, 130, 246, 0.25);
+  color: inherit;
+}
+
+.dark ::selection {
+  background: rgba(139, 92, 246, 0.35);
+}
