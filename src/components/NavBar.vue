@@ -6,9 +6,7 @@
     <div class="max-w-6xl mx-auto w-full px-6 flex items-center justify-between">
       <!-- 左侧 Logo + 名称 -->
       <a href="#" class="flex items-center gap-3 group" @click.prevent="scrollToTop">
-        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-blue to-brand-purple flex items-center justify-center text-white font-bold text-sm shadow-md shadow-brand-blue/20 transition-transform duration-300 group-hover:scale-105">
-          SK
-        </div>
+        <img src="/logo.jpg" alt="SK Logo" class="w-9 h-9 rounded-xl object-cover shadow-md shadow-brand-blue/20 transition-transform duration-300 group-hover:scale-105" />
         <span class="text-base font-semibold tracking-tight hidden sm:inline" style="color: var(--color-text)">
           赛客实验室 <span class="font-normal" style="color: var(--color-text-secondary)">SAIKE LAB</span>
         </span>

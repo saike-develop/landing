@@ -3,9 +3,7 @@
     <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
       <!-- 左侧版权 -->
       <div class="flex items-center gap-2 text-sm" style="color: var(--color-text-tertiary)">
-        <div class="w-6 h-6 rounded-md bg-gradient-to-br from-brand-blue to-brand-purple flex items-center justify-center text-white text-[10px] font-bold">
-          SK
-        </div>
+        <img src="/logo.jpg" alt="SK Logo" class="w-6 h-6 rounded-md object-cover" />
         <span>Saike Lab 赛客实验室</span>
       </div>
 
