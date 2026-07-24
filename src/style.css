@@ -151,11 +151,134 @@ body {
 }
 
 /* ============================================
-   Hero 网格背景装饰
+   Hero 星辰大海背景
    ============================================ */
 .hero-bg {
-  background-image: radial-gradient(circle, var(--color-hero-dot) 1px, transparent 1px);
-  background-size: 32px 32px;
+  background-color: var(--color-bg);
+  position: relative;
+}
+
+/* 星空层 — 使用多层 box-shadow 渲染星星 */
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  /* 小星点 */
+  box-shadow:
+    /* 第一层：密集小星 */
+    10vw 8vh 0 0 rgba(59,130,246,0.12),
+    25vw 15vh 0 0 rgba(139,92,246,0.10),
+    40vw 5vh 0 0 rgba(255,255,255,0.15),
+    55vw 20vh 0 0 rgba(59,130,246,0.08),
+    70vw 10vh 0 0 rgba(139,92,246,0.12),
+    85vw 18vh 0 0 rgba(255,255,255,0.10),
+    15vw 30vh 0 0 rgba(59,130,246,0.14),
+    35vw 40vh 0 0 rgba(139,92,246,0.09),
+    50vw 35vh 0 0 rgba(255,255,255,0.11),
+    65vw 45vh 0 0 rgba(59,130,246,0.10),
+    80vw 38vh 0 0 rgba(139,92,246,0.13),
+    5vw 50vh 0 0 rgba(255,255,255,0.08),
+    20vw 55vh 0 0 rgba(59,130,246,0.11),
+    45vw 60vh 0 0 rgba(139,92,246,0.07),
+    60vw 55vh 0 0 rgba(255,255,255,0.13),
+    75vw 65vh 0 0 rgba(59,130,246,0.09),
+    90vw 50vh 0 0 rgba(139,92,246,0.10),
+    12vw 70vh 0 0 rgba(255,255,255,0.06),
+    38vw 75vh 0 0 rgba(59,130,246,0.12),
+    58vw 80vh 0 0 rgba(139,92,246,0.08),
+    82vw 72vh 0 0 rgba(255,255,255,0.10),
+    25vw 85vh 0 0 rgba(59,130,246,0.07),
+    48vw 90vh 0 0 rgba(139,92,246,0.11),
+    70vw 88vh 0 0 rgba(255,255,255,0.09);
+  border-radius: 50%;
+  width: 2px;
+  height: 2px;
+  animation: star-twinkle 5s ease-in-out infinite;
+}
+
+/* 大星点层 */
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  box-shadow:
+    18vw 12vh 0 1px rgba(139,92,246,0.25),
+    52vw 8vh 0 1px rgba(59,130,246,0.3),
+    78vw 25vh 0 1px rgba(255,255,255,0.2),
+    30vw 48vh 0 1px rgba(139,92,246,0.22),
+    62vw 42vh 0 1px rgba(59,130,246,0.28),
+    8vw 62vh 0 1px rgba(255,255,255,0.18),
+    42vw 68vh 0 1px rgba(139,92,246,0.24),
+    72vw 58vh 0 1px rgba(59,130,246,0.2),
+    88vw 70vh 0 1px rgba(255,255,255,0.15),
+    22vw 78vh 0 1px rgba(139,92,246,0.18),
+    55vw 85vh 0 1px rgba(59,130,246,0.22);
+  border-radius: 50%;
+  width: 3px;
+  height: 3px;
+  animation: star-twinkle 4s ease-in-out 1s infinite;
+}
+
+@keyframes star-twinkle {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* ============================================
+   自定义光标
+   ============================================ */
+body {
+  cursor: none;
+}
+
+/* 恢复原生光标到可交互元素 */
+a, button, input, textarea, select, [role="button"] {
+  cursor: none;
+}
+
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 28px;
+  height: 28px;
+  border: 2px solid rgba(99, 102, 241, 0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease;
+}
+
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  background: #6366F1;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  transition: width 0.25s ease, height 0.25s ease, background-color 0.25s ease;
+}
+
+/* 悬停交互元素时光标变大 */
+.cursor-ring.hover {
+  width: 44px;
+  height: 44px;
+  border-color: rgba(139, 92, 246, 0.7);
+}
+
+.cursor-dot.hover {
+  width: 8px;
+  height: 8px;
+  background: #8B5CF6;
 }
 
 /* ============================================
