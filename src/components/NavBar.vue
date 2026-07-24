@@ -1,7 +1,7 @@
 <template>
   <nav
-    class="glass-nav fixed top-0 left-0 right-0 z-50 h-16 flex items-center transition-all duration-300"
-    :class="scrolled ? 'shadow-sm' : 'shadow-none'"
+    class="fixed top-0 left-0 right-0 z-50 h-16 flex items-center transition-all duration-500"
+    :class="scrolled ? 'glass-nav shadow-sm' : 'bg-transparent'"
   >
     <div class="max-w-6xl mx-auto w-full px-6 flex items-center justify-between">
       <!-- 左侧 Logo + 名称 -->
@@ -24,12 +24,7 @@
           {{ link.label }}
         </a>
         <!-- 招新入口按钮 -->
-        <a
-          href="#join"
-          class="btn-gradient ml-2 text-sm"
-        >
-          招新入口
-        </a>
+        <a href="#join" class="btn-gradient ml-2 text-sm">招新入口</a>
         <!-- 深色模式切换 -->
         <button
           @click="$emit('toggleDark')"
@@ -47,7 +42,6 @@
           @click="$emit('toggleDark')"
           class="w-9 h-9 flex items-center justify-center rounded-lg transition-colors duration-200 hover:bg-black/5 dark:hover:bg-white/10"
           style="color: var(--color-text-secondary)"
-          :title="isDark ? '切换浅色模式' : '切换深色模式'"
         >
           <i :class="isDark ? 'fas fa-sun' : 'fas fa-moon'"></i>
         </button>
@@ -74,23 +68,10 @@
         v-if="mobileOpen"
         class="absolute top-16 left-0 right-0 glass-card rounded-t-none rounded-b-2xl mx-4 p-4 flex flex-col gap-1 md:hidden"
       >
-        <a
-          v-for="link in navLinks"
-          :key="link.href"
-          :href="link.href"
-          @click="mobileOpen = false"
-          class="px-4 py-2.5 text-sm rounded-lg transition-colors duration-200 hover:bg-black/5 dark:hover:bg-white/10"
-          style="color: var(--color-text-secondary)"
-        >
-          {{ link.label }}
-        </a>
-        <a
-          href="#join"
-          @click="mobileOpen = false"
-          class="btn-gradient text-center mt-2"
-        >
-          招新入口
-        </a>
+        <a v-for="link in navLinks" :key="link.href" :href="link.href" @click="mobileOpen = false"
+           class="px-4 py-2.5 text-sm rounded-lg transition-colors duration-200 hover:bg-black/5 dark:hover:bg-white/10"
+           style="color: var(--color-text-secondary)">{{ link.label }}</a>
+        <a href="#join" @click="mobileOpen = false" class="btn-gradient text-center mt-2">招新入口</a>
       </div>
     </Transition>
   </nav>
@@ -99,19 +80,15 @@
 <script setup>
 import { ref } from 'vue'
 
-defineProps({
-  scrolled: Boolean,
-  isDark: Boolean,
-})
-
+defineProps({ scrolled: Boolean, isDark: Boolean })
 defineEmits(['toggleDark'])
 
 const mobileOpen = ref(false)
 
 const navLinks = [
   { label: '关于我们', href: '#about' },
-  { label: 'SEC 安全方向', href: '#sec' },
-  { label: 'CODING 开发方向', href: '#coding' },
+  { label: 'SEC 安全', href: '#sec' },
+  { label: 'CODING 开发', href: '#coding' },
   { label: '招新入口', href: '#join' },
 ]
 
