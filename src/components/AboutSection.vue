@@ -1,5 +1,5 @@
 <template>
-  <section id="about" class="py-20 sm:py-28">
+  <section id="about" class="snap-section py-20 sm:py-28">
     <div ref="aboutRef" class="reveal max-w-6xl mx-auto px-6">
       <!-- 章节标题 -->
       <div class="text-center mb-16">

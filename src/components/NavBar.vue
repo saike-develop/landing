@@ -4,6 +4,13 @@
     :class="scrolled ? 'glass-nav shadow-sm' : 'bg-transparent'"
   >
     <div class="max-w-6xl mx-auto w-full px-6 flex items-center justify-between">
+      <!-- macOS 三色圆点（桌面端装饰） -->
+      <div class="mac-dots hidden sm:flex mr-4">
+        <span class="mac-dot close"></span>
+        <span class="mac-dot minimize"></span>
+        <span class="mac-dot maximize"></span>
+      </div>
+
       <!-- 左侧 Logo + 名称 -->
       <a href="#" class="flex items-center gap-3 group" @click.prevent="scrollToTop">
         <img src="/logo.jpg" alt="SK Logo" class="w-9 h-9 rounded-xl object-cover shadow-md shadow-brand-blue/20 transition-transform duration-300 group-hover:scale-105" />

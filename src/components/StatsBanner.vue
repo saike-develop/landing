@@ -1,5 +1,5 @@
 <template>
-  <section class="py-16 sm:py-20">
+  <section class="snap-section py-16 sm:py-20">
     <div ref="statsRef" class="reveal max-w-4xl mx-auto px-6">
       <div class="grid grid-cols-3 gap-6 sm:gap-10 text-center">
         <!-- 核心方向 -->

@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen" :class="{ dark: isDark }">
     <NavBar :scrolled="scrolled" :is-dark="isDark" @toggle-dark="toggleDark" />
-    <main>
+    <main class="snap-container">
       <HeroSection />
       <StatsBanner />
       <DirectionSEC />

@@ -1,5 +1,5 @@
 <template>
-  <section id="coding" class="py-20 sm:py-28">
+  <section id="coding" class="snap-section py-20 sm:py-28">
     <div class="max-w-6xl mx-auto px-6">
       <div ref="codingRef" class="reveal grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <!-- 左侧：装饰图标网格（与 SEC 交错） -->

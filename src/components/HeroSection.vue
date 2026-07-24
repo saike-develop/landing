@@ -1,5 +1,5 @@
 <template>
-  <section class="relative min-h-screen flex items-center justify-center px-6 overflow-hidden hero-bg">
+  <section class="snap-section relative min-h-screen flex items-center justify-center px-6 overflow-hidden hero-bg">
     <!-- 浮动装饰光晕 -->
     <div
       class="absolute w-[500px] h-[500px] sm:w-[700px] sm:h-[700px] rounded-full pointer-events-none animate-float-blob-1"

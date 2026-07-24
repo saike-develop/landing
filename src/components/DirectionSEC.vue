@@ -1,5 +1,5 @@
 <template>
-  <section id="sec" class="section-alt py-20 sm:py-28">
+  <section id="sec" class="snap-section section-alt py-20 sm:py-28">
     <div class="max-w-6xl mx-auto px-6">
       <div ref="secRef" class="reveal grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <!-- 左侧：文字内容 -->

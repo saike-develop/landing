@@ -1,5 +1,5 @@
 <template>
-  <section id="join" class="relative py-20 sm:py-28 overflow-hidden"
+  <section id="join" class="snap-section relative py-20 sm:py-28 overflow-hidden"
            style="background: linear-gradient(135deg, rgba(59,130,246,0.06) 0%, rgba(139,92,246,0.08) 100%)">
     <!-- 装饰光晕 -->
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full pointer-events-none animate-breathe"
