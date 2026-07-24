@@ -1,5 +1,8 @@
 <template>
   <div class="min-h-screen" :class="{ dark: isDark }">
+    <!-- 全页面星辰大海 -->
+    <div id="starfield"></div>
+
     <!-- 自定义光标 -->
     <div ref="cursorRing" class="cursor-ring"></div>
     <div ref="cursorDot" class="cursor-dot"></div>
@@ -43,32 +46,20 @@ function onScroll() {
   })
 }
 
-// 自定义光标
+// 自定义光标 — 圆环和点同时跟随，无延迟
 const cursorRing = ref(null)
 const cursorDot = ref(null)
-let mouseX = 0, mouseY = 0
-let ringX = 0, ringY = 0
-let cursorRaf = null
 
 function onMouseMove(e) {
-  mouseX = e.clientX
-  mouseY = e.clientY
-  // 中心点即时跟随
-  if (cursorDot.value) {
-    cursorDot.value.style.left = mouseX + 'px'
-    cursorDot.value.style.top = mouseY + 'px'
-  }
-}
-
-function animateCursor() {
-  // 圆环平滑跟随（弹簧效果）
+  // 圆环和中心点同时即时跟随
   if (cursorRing.value) {
-    ringX += (mouseX - ringX) * 0.15
-    ringY += (mouseY - ringY) * 0.15
-    cursorRing.value.style.left = ringX + 'px'
-    cursorRing.value.style.top = ringY + 'px'
+    cursorRing.value.style.left = e.clientX + 'px'
+    cursorRing.value.style.top = e.clientY + 'px'
   }
-  cursorRaf = requestAnimationFrame(animateCursor)
+  if (cursorDot.value) {
+    cursorDot.value.style.left = e.clientX + 'px'
+    cursorDot.value.style.top = e.clientY + 'px'
+  }
 }
 
 // 悬停检测
@@ -90,24 +81,9 @@ function onMouseOut(e) {
 
 onMounted(() => {
   window.addEventListener('scroll', onScroll, { passive: true })
-  // 光标事件
   document.addEventListener('mousemove', onMouseMove, { passive: true })
   document.addEventListener('mouseover', onMouseOver, { passive: true })
   document.addEventListener('mouseout', onMouseOut, { passive: true })
-  // 初始位置
-  mouseX = window.innerWidth / 2
-  mouseY = window.innerHeight / 2
-  ringX = mouseX
-  ringY = mouseY
-  if (cursorRing.value) {
-    cursorRing.value.style.left = mouseX + 'px'
-    cursorRing.value.style.top = mouseY + 'px'
-  }
-  if (cursorDot.value) {
-    cursorDot.value.style.left = mouseX + 'px'
-    cursorDot.value.style.top = mouseY + 'px'
-  }
-  cursorRaf = requestAnimationFrame(animateCursor)
 })
 
 onUnmounted(() => {
@@ -116,6 +92,5 @@ onUnmounted(() => {
   document.removeEventListener('mouseover', onMouseOver)
   document.removeEventListener('mouseout', onMouseOut)
   if (scrollTimer) cancelAnimationFrame(scrollTimer)
-  if (cursorRaf) cancelAnimationFrame(cursorRaf)
 })
 </script>

@@ -19,6 +19,9 @@
   --color-accent-end: #8B5CF6;
   --color-nav-bg: rgba(245, 245, 247, 0.72);
   --color-hero-dot: rgba(59, 130, 246, 0.08);
+  /* 星星颜色 — 浅色模式下是暗色星星 */
+  --star-color-small: rgba(0, 0, 0, 0.10);
+  --star-color-large: rgba(0, 0, 0, 0.14);
 }
 
 .dark {
@@ -33,6 +36,9 @@
   --color-shadow-hover: rgba(0, 0, 0, 0.5);
   --color-nav-bg: rgba(29, 29, 31, 0.72);
   --color-hero-dot: rgba(139, 92, 246, 0.12);
+  /* 深色模式下是亮色星星 */
+  --star-color-small: rgba(255, 255, 255, 0.12);
+  --star-color-large: rgba(180, 180, 255, 0.18);
 }
 
 /* ============================================
@@ -151,47 +157,49 @@ body {
 }
 
 /* ============================================
-   Hero 星辰大海背景
+   全页面星辰大海背景（fixed 跟随滚动）
    ============================================ */
-.hero-bg {
-  background-color: var(--color-bg);
-  position: relative;
-}
-
-/* 星空层 — 使用多层 box-shadow 渲染星星 */
-.hero-bg::before {
-  content: '';
-  position: absolute;
+#starfield {
+  position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  /* 小星点 */
+}
+
+/* 小星点层 */
+#starfield::before {
+  content: '';
+  position: absolute;
+  inset: 0;
   box-shadow:
-    /* 第一层：密集小星 */
-    10vw 8vh 0 0 rgba(59,130,246,0.12),
-    25vw 15vh 0 0 rgba(139,92,246,0.10),
-    40vw 5vh 0 0 rgba(255,255,255,0.15),
-    55vw 20vh 0 0 rgba(59,130,246,0.08),
-    70vw 10vh 0 0 rgba(139,92,246,0.12),
-    85vw 18vh 0 0 rgba(255,255,255,0.10),
-    15vw 30vh 0 0 rgba(59,130,246,0.14),
-    35vw 40vh 0 0 rgba(139,92,246,0.09),
-    50vw 35vh 0 0 rgba(255,255,255,0.11),
-    65vw 45vh 0 0 rgba(59,130,246,0.10),
-    80vw 38vh 0 0 rgba(139,92,246,0.13),
-    5vw 50vh 0 0 rgba(255,255,255,0.08),
-    20vw 55vh 0 0 rgba(59,130,246,0.11),
-    45vw 60vh 0 0 rgba(139,92,246,0.07),
-    60vw 55vh 0 0 rgba(255,255,255,0.13),
-    75vw 65vh 0 0 rgba(59,130,246,0.09),
-    90vw 50vh 0 0 rgba(139,92,246,0.10),
-    12vw 70vh 0 0 rgba(255,255,255,0.06),
-    38vw 75vh 0 0 rgba(59,130,246,0.12),
-    58vw 80vh 0 0 rgba(139,92,246,0.08),
-    82vw 72vh 0 0 rgba(255,255,255,0.10),
-    25vw 85vh 0 0 rgba(59,130,246,0.07),
-    48vw 90vh 0 0 rgba(139,92,246,0.11),
-    70vw 88vh 0 0 rgba(255,255,255,0.09);
+    10vw 8vh 0 0 var(--star-color-small),
+    25vw 15vh 0 0 var(--star-color-small),
+    40vw 5vh 0 0 var(--star-color-small),
+    55vw 20vh 0 0 var(--star-color-small),
+    70vw 10vh 0 0 var(--star-color-small),
+    85vw 18vh 0 0 var(--star-color-small),
+    15vw 30vh 0 0 var(--star-color-small),
+    35vw 40vh 0 0 var(--star-color-small),
+    50vw 35vh 0 0 var(--star-color-small),
+    65vw 45vh 0 0 var(--star-color-small),
+    80vw 38vh 0 0 var(--star-color-small),
+    5vw 50vh 0 0 var(--star-color-small),
+    20vw 55vh 0 0 var(--star-color-small),
+    45vw 60vh 0 0 var(--star-color-small),
+    60vw 55vh 0 0 var(--star-color-small),
+    75vw 65vh 0 0 var(--star-color-small),
+    90vw 50vh 0 0 var(--star-color-small),
+    12vw 70vh 0 0 var(--star-color-small),
+    38vw 75vh 0 0 var(--star-color-small),
+    58vw 80vh 0 0 var(--star-color-small),
+    82vw 72vh 0 0 var(--star-color-small),
+    25vw 85vh 0 0 var(--star-color-small),
+    48vw 90vh 0 0 var(--star-color-small),
+    70vw 88vh 0 0 var(--star-color-small),
+    8vw 95vh 0 0 var(--star-color-small),
+    92vw 42vh 0 0 var(--star-color-small),
+    33vw 22vh 0 0 var(--star-color-small),
+    67vw 68vh 0 0 var(--star-color-small);
   border-radius: 50%;
   width: 2px;
   height: 2px;
@@ -199,24 +207,25 @@ body {
 }
 
 /* 大星点层 */
-.hero-bg::after {
+#starfield::after {
   content: '';
   position: absolute;
   inset: 0;
-  pointer-events: none;
-  z-index: 0;
   box-shadow:
-    18vw 12vh 0 1px rgba(139,92,246,0.25),
-    52vw 8vh 0 1px rgba(59,130,246,0.3),
-    78vw 25vh 0 1px rgba(255,255,255,0.2),
-    30vw 48vh 0 1px rgba(139,92,246,0.22),
-    62vw 42vh 0 1px rgba(59,130,246,0.28),
-    8vw 62vh 0 1px rgba(255,255,255,0.18),
-    42vw 68vh 0 1px rgba(139,92,246,0.24),
-    72vw 58vh 0 1px rgba(59,130,246,0.2),
-    88vw 70vh 0 1px rgba(255,255,255,0.15),
-    22vw 78vh 0 1px rgba(139,92,246,0.18),
-    55vw 85vh 0 1px rgba(59,130,246,0.22);
+    18vw 12vh 0 1px var(--star-color-large),
+    52vw 8vh 0 1px var(--star-color-large),
+    78vw 25vh 0 1px var(--star-color-large),
+    30vw 48vh 0 1px var(--star-color-large),
+    62vw 42vh 0 1px var(--star-color-large),
+    8vw 62vh 0 1px var(--star-color-large),
+    42vw 68vh 0 1px var(--star-color-large),
+    72vw 58vh 0 1px var(--star-color-large),
+    88vw 70vh 0 1px var(--star-color-large),
+    22vw 78vh 0 1px var(--star-color-large),
+    55vw 85vh 0 1px var(--star-color-large),
+    95vw 50vh 0 1px var(--star-color-large),
+    48vw 32vh 0 1px var(--star-color-large),
+    15vw 82vh 0 1px var(--star-color-large);
   border-radius: 50%;
   width: 3px;
   height: 3px;
@@ -224,8 +233,14 @@ body {
 }
 
 @keyframes star-twinkle {
-  0%, 100% { opacity: 0.5; }
+  0%, 100% { opacity: 0.4; }
   50% { opacity: 1; }
+}
+
+/* Hero 保持相对定位，让内容在星场上 */
+.hero-bg {
+  background-color: transparent;
+  position: relative;
 }
 
 /* ============================================
@@ -246,12 +261,13 @@ a, button, input, textarea, select, [role="button"] {
   left: 0;
   width: 28px;
   height: 28px;
-  border: 2px solid rgba(99, 102, 241, 0.5);
+  border: 2px solid rgba(99, 102, 241, 0.6);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
-  transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease;
+  box-shadow: 0 0 12px rgba(99, 102, 241, 0.35), 0 0 30px rgba(139, 92, 246, 0.15);
+  transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .cursor-dot {
@@ -265,20 +281,23 @@ a, button, input, textarea, select, [role="button"] {
   pointer-events: none;
   z-index: 10000;
   transform: translate(-50%, -50%);
-  transition: width 0.25s ease, height 0.25s ease, background-color 0.25s ease;
+  box-shadow: 0 0 8px rgba(99, 102, 241, 0.8), 0 0 20px rgba(139, 92, 246, 0.4);
+  transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 /* 悬停交互元素时光标变大 */
 .cursor-ring.hover {
   width: 44px;
   height: 44px;
-  border-color: rgba(139, 92, 246, 0.7);
+  border-color: rgba(139, 92, 246, 0.8);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.5), 0 0 50px rgba(139, 92, 246, 0.25);
 }
 
 .cursor-dot.hover {
   width: 8px;
   height: 8px;
   background: #8B5CF6;
+  box-shadow: 0 0 14px rgba(139, 92, 246, 0.9), 0 0 30px rgba(139, 92, 246, 0.5);
 }
 
 /* ============================================
