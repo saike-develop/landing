@@ -2,7 +2,7 @@
 {{- if gt $pag.TotalPages 1 -}}
 <nav class="pagination" aria-label="分页导航">
   {{- if $pag.HasPrev -}}
-    <a href="{{ $pag.Prev.URL | relURL }}" class="pagination-btn prev">
+    <a href="{{ printf "%s%s" site.BaseURL (strings.TrimPrefix "/" $pag.Prev.URL) | safeURL }}" class="pagination-btn prev">
       <i class="fas fa-arrow-left"></i>
       <span>{{ i18n "prev" }}</span>
     </a>
@@ -18,7 +18,7 @@
   </span>
 
   {{- if $pag.HasNext -}}
-    <a href="{{ $pag.Next.URL | relURL }}" class="pagination-btn next">
+    <a href="{{ printf "%s%s" site.BaseURL (strings.TrimPrefix "/" $pag.Next.URL) | safeURL }}" class="pagination-btn next">
       <span>{{ i18n "next" }}</span>
       <i class="fas fa-arrow-right"></i>
     </a>

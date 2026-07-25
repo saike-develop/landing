@@ -23,9 +23,9 @@
       {{- $blogTags = $blogTags | uniq | sort -}}
       {{- if $blogTags -}}
         <div class="tag-filter">
-          <a href="{{ "posts/" | relLangURL }}" class="tag-filter-item active">All</a>
+          <a href="{{ printf "%sposts/" site.BaseURL | safeURL }}" class="tag-filter-item active">All</a>
           {{- range $blogTags -}}
-            <a href="{{ "tags/" | relLangURL }}{{ . | urlize }}" class="tag-filter-item">{{ . }}</a>
+            <a href="{{ printf "%stags/%s" site.BaseURL (. | urlize) | safeURL }}" class="tag-filter-item">{{ . }}</a>
           {{- end -}}
         </div>
       {{- end -}}

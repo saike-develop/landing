@@ -50,7 +50,7 @@
       {{- with .Params.tags -}}
         <div class="article-tag-list">
           {{- range . -}}
-            <a href="{{ "tags/" | relLangURL }}{{ . | urlize }}" class="article-tag-link">{{ . }}</a>
+            <a href="{{ printf "%stags/%s" site.BaseURL (. | urlize) | safeURL }}" class="article-tag-link">{{ . }}</a>
           {{- end -}}
         </div>
       {{- end -}}

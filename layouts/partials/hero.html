@@ -62,7 +62,7 @@
     </p>
 
     <!-- CTA -->
-    <a href="{{ .Site.Params.hero.cta_url | default "#join" }}" class="hero-cta">
+    <a href="{{ printf "%s#join" site.BaseURL | safeURL }}" class="hero-cta">
       <span>{{ .Site.Params.hero.cta_text | default "加入我们" }}</span>
       <i class="fas fa-arrow-right"></i>
     </a>
