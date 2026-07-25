@@ -12,9 +12,9 @@
     <div class="nav-links">
       {{- range .Site.Params.menu -}}
         {{- if eq .name "join" -}}
-          <a href="{{ .url }}" class="nav-link-cta">{{ .label }}</a>
+          <a href="{{ .url | relLangURL }}" class="nav-link-cta">{{ .label }}</a>
         {{- else -}}
-          <a href="{{ .url }}" class="nav-link">{{ .label }}</a>
+          <a href="{{ .url | relLangURL }}" class="nav-link">{{ .label }}</a>
         {{- end -}}
       {{- end -}}
     </div>
