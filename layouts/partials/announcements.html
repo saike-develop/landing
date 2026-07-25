@@ -20,7 +20,7 @@
       {{- end -}}
     </div>
     <div style="text-align: center; margin-top: var(--space-8);">
-      <a href="{{ "/updates/" | relLangURL }}" class="btn btn-secondary">
+      <a href="{{ printf "%s%s" site.BaseURL "updates/" | safeURL }}" class="btn btn-secondary">
         <span>查看全部</span>
         <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i>
       </a>

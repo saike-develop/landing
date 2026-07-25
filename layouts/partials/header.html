@@ -11,10 +11,14 @@
     <!-- Desktop Links -->
     <div class="nav-links">
       {{- range .Site.Params.menu -}}
+        {{- $href := .url -}}
+        {{- if hasPrefix .url "/" -}}
+          {{- $href = printf "%s%s" site.BaseURL (strings.TrimPrefix "/" .url) -}}
+        {{- end -}}
         {{- if eq .name "join" -}}
-          <a href="{{ .url | relLangURL }}" class="nav-link-cta">{{ .label }}</a>
+          <a href="{{ $href | safeURL }}" class="nav-link-cta">{{ .label }}</a>
         {{- else -}}
-          <a href="{{ .url | relLangURL }}" class="nav-link">{{ .label }}</a>
+          <a href="{{ $href | safeURL }}" class="nav-link">{{ .label }}</a>
         {{- end -}}
       {{- end -}}
     </div>
