@@ -1,0 +1,23 @@
+<!-- Navigation -->
+<nav class="nav" id="navbar">
+  <div class="nav-inner">
+    <!-- Brand -->
+    <a href="{{ .Site.Home.RelPermalink }}" class="nav-brand" aria-label="Saike Lab Home">
+      {{- $logo := .Site.Params.hero.logo | default "logo.jpg" -}}
+      <img src="{{ $logo | relURL }}" alt="SK Logo" width="30" height="30" />
+      <span>赛客实验室<span class="nav-brand-sub"> SAIKE LAB</span></span>
+    </a>
+
+    <!-- Desktop Links -->
+    <div class="nav-links">
+      {{- range .Site.Params.menu -}}
+        {{- if eq .name "join" -}}
+          <a href="{{ .url }}" class="nav-link-cta">{{ .label }}</a>
+        {{- else -}}
+          <a href="{{ .url }}" class="nav-link">{{ .label }}</a>
+        {{- end -}}
+      {{- end -}}
+    </div>
+
+    </div>
+</nav>

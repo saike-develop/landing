@@ -1,0 +1,130 @@
+/* ============================================
+   Saike Lab — Design Tokens
+   Apple Newsroom + Editorial aesthetic
+   ============================================ */
+
+:root {
+  /* Brand */
+  --color-blue: #2563EB;
+  --color-purple: #7C3AED;
+
+  /* Backgrounds */
+  --color-bg: #F5F5F7;
+  --color-surface: #FFFFFF;
+  --color-surface-hover: #FAFAFA;
+
+  /* Text */
+  --color-text: #1D1D1F;
+  --color-text-secondary: #6E6E73;
+  --color-text-tertiary: #86868B;
+
+  /* Borders */
+  --color-border: rgba(0, 0, 0, 0.08);
+
+  /* Shadows — very light */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.08);
+
+  /* Selection */
+  --color-selection: rgba(37, 99, 235, 0.15);
+
+  /* Code */
+  --color-code-bg: #111111;
+  --color-code-text: #E5E5E7;
+
+  /* Nav */
+  --color-nav-bg: rgba(245, 245, 247, 0.8);
+}
+
+/* --------------------------------------------
+   Typography
+   -------------------------------------------- */
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text',
+    'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', Menlo, Consolas, monospace;
+  --font-editorial: 'Georgia', 'Noto Serif SC', 'Times New Roman', serif;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 2rem;
+  --text-4xl: 2.5rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+  --text-7xl: 4.5rem;
+
+  --leading-tight: 1.15;
+  --leading-snug: 1.3;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.75;
+  --leading-loose: 1.8;
+
+  --tracking-tight: -0.02em;
+  --tracking-normal: -0.01em;
+  --tracking-wide: 0.02em;
+}
+
+/* --------------------------------------------
+   Spacing
+   -------------------------------------------- */
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+}
+
+/* --------------------------------------------
+   Border Radius
+   -------------------------------------------- */
+:root {
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+  --radius-full: 9999px;
+}
+
+/* --------------------------------------------
+   Reading width
+   -------------------------------------------- */
+:root {
+  --reading-width: 700px;
+}
+
+/* --------------------------------------------
+   Z-index
+   -------------------------------------------- */
+:root {
+  --z-base: 0;
+  --z-elevated: 10;
+  --z-nav: 100;
+  --z-toc: 40;
+}
+
+/* --------------------------------------------
+   Transitions
+   -------------------------------------------- */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-fast: 0.15s;
+  --duration-normal: 0.3s;
+  --duration-slow: 0.5s;
+}

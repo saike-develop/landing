@@ -1,0 +1,58 @@
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+{{- $title := .Title -}}
+{{- if .IsHome -}}
+  {{- $title = site.Title -}}
+{{- else if .Title -}}
+  {{- $title = printf "%s | %s" .Title site.Title -}}
+{{- end -}}
+<title>{{ $title | safeHTML }}</title>
+
+<meta name="description" content="{{ .Params.description | default .Site.Params.description | safeHTML }}" />
+{{- $keywords := default .Site.Params.keywords .Params.keywords -}}
+{{- with $keywords }}
+  {{- if reflect.IsSlice . }}
+    <meta name="keywords" content="{{ delimit . ", " }}" />
+  {{- else }}
+    <meta name="keywords" content="{{ . }}" />
+  {{- end }}
+{{- end }}
+
+<!-- Open Graph -->
+{{- if .Site.Params.open_graph.enable -}}
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="{{ $title | safeHTML }}" />
+  <meta property="og:description" content="{{ .Params.description | default .Site.Params.description | safeHTML }}" />
+  <meta property="og:url" content="{{ .Permalink }}" />
+  <meta property="og:site_name" content="{{ site.Title }}" />
+  <meta name="twitter:card" content="{{ .Site.Params.open_graph.options.twitter_card | default "summary_large_image" }}" />
+{{- end -}}
+
+<!-- RSS -->
+{{- with .OutputFormats.Get "rss" -}}
+  {{ printf `<link rel=%q type=%q href=%q title=%q>` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
+{{- end -}}
+
+<!-- Favicon -->
+<link rel="shortcut icon" href="{{ "favicon.ico" | relURL }}" />
+
+<!-- Font Awesome -->
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+<!-- Hugo Pipes SCSS -->
+{{- $opts := dict "transpiler" "libsass" "targetPath" "css/main.css" "enableSourceMap" true -}}
+{{- if eq hugo.Environment "production" -}}
+  {{- $opts = dict "transpiler" "libsass" "targetPath" "css/main.css" "enableSourceMap" false -}}
+{{- end -}}
+{{- $css := resources.Get "css/main.scss" | toCSS $opts -}}
+{{- if eq hugo.Environment "production" -}}
+  {{- $css = $css | minify | fingerprint -}}
+{{- end -}}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" {{ if eq hugo.Environment "production" }}integrity="{{ $css.Data.Integrity }}"{{ end }} />
+
+<!-- Injector: head_end -->
+{{- if .Site.Params.injector.head_end -}}
+  {{- .Site.Params.injector.head_end | safeHTML -}}
+{{- end -}}

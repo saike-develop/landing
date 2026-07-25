@@ -1,0 +1,49 @@
+# English
+- id: home
+  translation: Home
+- id: about
+  translation: About
+- id: archives
+  translation: Archives
+- id: search
+  translation: Search
+- id: tag
+  translation: Tags
+- id: category
+  translation: Categories
+- id: read_more
+  translation: Read More
+- id: prev
+  translation: Prev
+- id: next
+  translation: Next
+- id: toc
+  translation: Table of Contents
+- id: word_count
+  translation: '{{ . }} words'
+- id: reading_time
+  translation: '{{ . }} min read'
+- id: published_on
+  translation: Published on
+- id: updated_on
+  translation: Updated on
+- id: by
+  translation: by
+- id: tags
+  translation: Tags
+- id: categories
+  translation: Categories
+- id: recent_posts
+  translation: Recent Posts
+- id: back_to_top
+  translation: Back to Top
+- id: not_found
+  translation: Page Not Found
+- id: project
+  translation: Project
+- id: member
+  translation: Member
+- id: source_code
+  translation: Source Code
+- id: view_project
+  translation: View Project

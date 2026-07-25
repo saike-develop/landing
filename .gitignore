@@ -1,3 +1,20 @@
+# Hugo
+/public/
+/resources/
+/_gen/
+.hugo_build.lock
+
+# Hugo binary
+hugo.exe
+
+# Node
 node_modules/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
 .DS_Store
+Thumbs.db
 *.local

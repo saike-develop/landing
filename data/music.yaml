@@ -1,0 +1,8 @@
+# 音乐播放列表
+# 将音乐文件放入 static/music/ 目录
+# 格式: 歌手 - 歌名.mp3
+songs:
+  # - title: "歌名"
+  #   artist: "歌手"
+  #   url: "/music/song.mp3"
+  #   cover: "/images/music-cover.jpg"

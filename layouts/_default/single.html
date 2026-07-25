@@ -1,0 +1,86 @@
+{{- define "main" -}}
+<article class="article-page">
+  <!-- Header -->
+  <header class="article-header">
+    {{- with .Params.categories -}}
+      <div class="article-badge">
+        <span class="article-badge-text">{{ delimit . " · " | upper }}</span>
+      </div>
+    {{- end -}}
+    <h1 class="article-title">{{ .Title }}</h1>
+    <div class="article-meta">
+      {{- if .Params.author -}}
+        <span class="article-meta-item">{{ .Params.author }}</span>
+        <span class="article-meta-divider">·</span>
+      {{- end -}}
+      <span class="article-meta-item">{{ .Date.Format "Jan 2, 2006" }}</span>
+      <span class="article-meta-divider">·</span>
+      <span class="article-meta-item">{{ i18n "reading_time" .ReadingTime | default (printf "%d min read" .ReadingTime) }}</span>
+    </div>
+  </header>
+
+  <!-- Body + TOC wrapper -->
+  <div class="article-body-wrap">
+    <!-- TOC Sidebar -->
+    {{- if .TableOfContents -}}
+      <aside class="article-toc">
+        <h3 class="toc-title">目录</h3>
+        <div class="toc-content">
+          {{ .TableOfContents }}
+        </div>
+      </aside>
+    {{- end -}}
+
+    <!-- Body -->
+    <div class="article-body">
+      {{- $content := .RawContent -}}
+      {{- range findRESubmatch `!\[\[([^\]]+)\]\]` .RawContent -}}
+        {{- $img := $.Page.Resources.GetMatch (printf "**/%s" (index . 1)) -}}
+        {{- if $img -}}
+          {{- $content = replace $content (index . 0) (printf "![image](%s)" $img.RelPermalink) -}}
+        {{- end -}}
+      {{- end -}}
+      {{- $content | $.Page.RenderString -}}
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="article-footer-wrap">
+    <footer class="article-footer">
+      {{- with .Params.tags -}}
+        <div class="article-tag-list">
+          {{- range . -}}
+            <a href="{{ "tags/" | relLangURL }}{{ . | urlize }}" class="article-tag-link">{{ . }}</a>
+          {{- end -}}
+        </div>
+      {{- end -}}
+    </footer>
+  </div>
+
+  <!-- Prev/Next -->
+  {{- $cats := .Params.categories -}}
+  {{- $sameCat := where .Site.RegularPages "Params.categories" "intersect" $cats -}}
+  {{- $sameCat = $sameCat.ByDate.Reverse -}}
+  {{- $prev := false -}}{{- $found := false -}}{{- $next := false -}}
+  {{- range $sameCat -}}
+    {{- if $found -}}{{- $next = . -}}{{- break -}}{{- end -}}
+    {{- if eq .RelPermalink $.RelPermalink -}}{{- $found = true -}}{{- else -}}{{- $prev = . -}}{{- end -}}
+  {{- end -}}
+  {{- if or $prev $next -}}
+    <nav class="article-nav">
+      {{- if $prev -}}
+        <a href="{{ $prev.RelPermalink }}" class="article-nav-link">
+          <span class="article-nav-direction">← Previous</span>
+          <span class="article-nav-title">{{ $prev.Title }}</span>
+        </a>
+      {{- end -}}
+      {{- if $next -}}
+        <a href="{{ $next.RelPermalink }}" class="article-nav-link next">
+          <span class="article-nav-direction">Next →</span>
+          <span class="article-nav-title">{{ $next.Title }}</span>
+        </a>
+      {{- end -}}
+    </nav>
+  {{- end -}}
+</article>
+{{- end -}}

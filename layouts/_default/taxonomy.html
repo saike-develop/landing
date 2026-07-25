@@ -1,0 +1,16 @@
+{{- define "main" -}}
+  <section class="section">
+    <div class="section-inner">
+      <h1>{{ .Title }}</h1>
+      {{- range .Pages -}}
+        <article style="margin-bottom: var(--space-8);">
+          <h2><a href="{{ .RelPermalink }}" style="color: var(--color-text);">{{ .Title }}</a></h2>
+          {{- if .Description -}}
+            <p style="color: var(--color-text-secondary);">{{ .Description }}</p>
+          {{- end -}}
+          <time style="font-size: var(--text-sm); color: var(--color-text-tertiary);">{{ .Date.Format "2006-01-02" }}</time>
+        </article>
+      {{- end -}}
+    </div>
+  </section>
+{{- end -}}

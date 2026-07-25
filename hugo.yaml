@@ -1,0 +1,29 @@
+baseURL: 'https://saike-develop.github.io/landing/'
+title: 'Saike Lab'
+locale: 'zh-CN'
+hasCJKLanguage: true
+enableGitInfo: false
+
+permalinks:
+  posts: /posts/:slug/
+  projects: /projects/:slug/
+
+ignoreFiles:
+  - '\.obsidian'
+  - '\.trash'
+  - 'saike_model'
+  - 'node_modules'
+
+outputs:
+  home:
+    - HTML
+    - RSS
+
+markup:
+  tableOfContents:
+    startLevel: 1
+    endLevel: 6
+    ordered: false
+
+# 不使用 theme，所有 layouts 在项目根
+# 直接使用 layouts/ 目录

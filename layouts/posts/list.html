@@ -1,0 +1,47 @@
+{{- define "main" -}}
+  {{- $ctx := . -}}
+  {{- $blogPosts := where .Site.RegularPages "Params.categories" "intersect" (slice "博文") -}}
+  {{- $paginator := .Paginate $blogPosts.ByDate.Reverse 10 -}}
+
+  <section class="section">
+    {{- if eq $paginator.PageNumber 1 -}}
+      <div class="section-header">
+        <span class="section-label">Blog</span>
+        <h1>Insights</h1>
+        <p>记录赛客实验室的探索、项目实践与技术思考。</p>
+        <div class="section-line"></div>
+      </div>
+
+      {{- /* Tag filter */ -}}
+      {{- $tagPosts := where .Site.RegularPages "Params.categories" "intersect" (slice "博文") -}}
+      {{- $blogTags := slice -}}
+      {{- range $tagPosts -}}
+        {{- with .Params.tags -}}
+          {{- range . -}}{{- $blogTags = $blogTags | append . -}}{{- end -}}
+        {{- end -}}
+      {{- end -}}
+      {{- $blogTags = $blogTags | uniq | sort -}}
+      {{- if $blogTags -}}
+        <div class="tag-filter">
+          <a href="{{ "posts/" | relLangURL }}" class="tag-filter-item active">All</a>
+          {{- range $blogTags -}}
+            <a href="{{ "tags/" | relLangURL }}{{ . | urlize }}" class="tag-filter-item">{{ . }}</a>
+          {{- end -}}
+        </div>
+      {{- end -}}
+    {{- end -}}
+
+    {{- /* Post grid */ -}}
+    <div class="post-list">
+      {{- range $index, $page := $paginator.Pages -}}
+        {{- partial "post-card.html" (dict "page" $page "index" $index "ctx" $ctx) -}}
+      {{- else -}}
+        <div class="empty-state">
+          <p>还没有文章，敬请期待。</p>
+        </div>
+      {{- end -}}
+    </div>
+
+    {{- partial "pagination.html" . -}}
+  </section>
+{{- end -}}

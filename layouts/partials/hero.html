@@ -1,0 +1,78 @@
+<!-- ============================================
+   Saike Lab — Hero Section
+   Cinematic opening scene with terminal
+   ============================================ -->
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <!-- Terminal Window -->
+    <div class="hero-terminal">
+      <div class="terminal-header">
+        <div class="terminal-dots">
+          <span class="terminal-dot close"></span>
+          <span class="terminal-dot minimize"></span>
+          <span class="terminal-dot maximize"></span>
+        </div>
+      </div>
+      <div class="terminal-body">
+        {{- range .Site.Params.hero.terminal_lines -}}
+          {{- $isCommand := strings.HasPrefix . "$" -}}
+          {{- $isHighlight := strings.Contains . "想" -}}
+          <div class="terminal-line{{ if $isCommand }} command{{ end }}{{ if $isHighlight }} highlight{{ end }}">
+            {{- if $isHighlight -}}
+              {{ . }}
+            {{- else if $isCommand -}}
+              {{ . }}<span class="cursor"></span>
+            {{- else -}}
+              {{ . }}
+            {{- end -}}
+          </div>
+        {{- end -}}
+      </div>
+    </div>
+
+    <!-- Logo Badge -->
+    <div class="hero-badge">
+      {{- $logo := .Site.Params.hero.logo | default "logo.jpg" -}}
+      <img src="{{ $logo | relURL }}" alt="SK Logo" width="28" height="28" />
+      <span>SAIKE LAB</span>
+    </div>
+
+    <!-- Title -->
+    <h1 class="hero-title">赛客实验室</h1>
+
+    <!-- Tagline -->
+    <p class="hero-tagline">
+      {{ .Site.Params.tagline.zh | default "想，全是问题；做，全是答案。" }}
+    </p>
+
+    <!-- Subtitle -->
+    <p class="hero-subtitle">
+      {{ .Site.Params.tagline.en | default "Think. Question everything. Build. Turn ideas into reality." }}
+    </p>
+
+    <!-- Location -->
+    <div class="hero-location">
+      <i class="fas fa-location-dot"></i>
+      <span>中北大学工程训练中心 A301</span>
+    </div>
+
+    <!-- Description -->
+    <p class="hero-description">
+      我们在寻找志同道合的你，一起探索技术的无限可能
+    </p>
+
+    <!-- CTA -->
+    <a href="{{ .Site.Params.hero.cta_url | default "#join" }}" class="hero-cta">
+      <span>{{ .Site.Params.hero.cta_text | default "加入我们" }}</span>
+      <i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="scroll-mouse">
+      <div class="scroll-dot"></div>
+    </div>
+  </div>
+</section>

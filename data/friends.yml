@@ -1,0 +1,20 @@
+# 赛友 — 友情链接
+# name:   好友名称
+# url:    好友网站链接
+# desc:   简短描述
+# image:  头像图片链接（支持外链或本地路径）
+
+ - name: BobcGn
+   url: https://bobcgn.github.io/quartz-myblogs/
+   desc: 一个纯粹的技术爱好者
+   image: https://avatars.githubusercontent.com/u/221724126?v=4
+
+ - name: 54sy
+   url: https://wangshuyi111.github.io/54sy/
+   desc: 无限进步
+   image: https://wangshuyi111.github.io/54sy/avatar/avatar.webp
+
+ - name: MuvosL
+   url: https://muvosl.github.io/moss-vein
+   desc: 区
+   image: https://muvosl.github.io/moss-vein/avatar/avatar.webp

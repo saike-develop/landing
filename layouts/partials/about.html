@@ -1,0 +1,20 @@
+<!-- About Section -->
+<section class="section section-alt" id="about">
+  <div class="reveal section-header" style="text-align: center;">
+    <span class="section-label">About Us</span>
+    <h2 style="text-align: center;">{{ .Site.Params.about.title | default "Who We Are" }}</h2>
+    <p style="max-width: 600px; margin: 0 auto;">{{ .Site.Params.about.subtitle | default "" }}</p>
+    <div class="section-line" style="margin: var(--space-5) auto 0;"></div>
+  </div>
+
+  <div class="reveal" style="max-width: 680px; margin: 0 auto; text-align: center;">
+    <div class="card" style="padding: var(--space-12);">
+      <p style="font-size: var(--text-xl); color: var(--color-text-secondary); line-height: var(--leading-loose);">
+        {{ .Site.Params.about.description | default "" | markdownify }}
+      </p>
+      <p style="font-size: var(--text-2xl); font-weight: 700; margin-top: var(--space-6); color: var(--color-text);">
+        {{ .Site.Params.tagline.zh }}
+      </p>
+    </div>
+  </div>
+</section>

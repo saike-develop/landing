@@ -1,0 +1,49 @@
+{{- define "main" -}}
+  {{- $ctx := . -}}
+  {{- /* Query all regular pages with category "公告" */ -}}
+  {{- $announcements := where .Site.RegularPages "Params.categories" "intersect" (slice "公告") -}}
+  {{- $paginator := .Paginate $announcements.ByDate.Reverse -}}
+
+  <section class="section">
+    <div class="section-inner" style="max-width: 780px;">
+      <!-- Header -->
+      <div class="section-header">
+        <span class="section-label gradient">Announcements</span>
+        <h1>公告</h1>
+        <p style="color: var(--color-text-secondary); margin-top: var(--space-4);">
+          实验室通知 · 招新信息 · 活动安排
+        </p>
+        <div class="section-line"></div>
+      </div>
+
+      <!-- Archive-style timeline -->
+      <div class="archive-outer">
+        {{- $sortedPages := $paginator.Pages.GroupByDate "2006" "desc" -}}
+        {{- range $sortedPages -}}
+          <section class="archive-section">
+            <div class="archive-year-wrap">
+              <span class="archive-year">{{ .Key }}</span>
+            </div>
+            <ul class="archive-items">
+              {{- range .Pages -}}
+                <li class="archive-item">
+                  <span class="archive-item-date">
+                    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "01-02" }}</time>
+                  </span>
+                  <a class="archive-item-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+                </li>
+              {{- end -}}
+            </ul>
+          </section>
+        {{- else -}}
+          <div class="empty-state">
+            <i class="fas fa-bullhorn" style="font-size: 3rem; color: var(--color-text-tertiary); margin-bottom: var(--space-4);"></i>
+            <p style="color: var(--color-text-tertiary);">还没有公告</p>
+          </div>
+        {{- end -}}
+      </div>
+
+      {{- partial "pagination.html" . -}}
+    </div>
+  </section>
+{{- end -}}

@@ -1,0 +1,64 @@
+{{- define "main" -}}
+  {{- $ctx := . -}}
+  {{- $all := where .Site.RegularPages "Section" "posts" -}}
+  {{- $paginator := .Paginate $all.ByDate.Reverse 15 -}}
+
+  <section class="section">
+    <div class="section-inner" style="max-width: 860px;">
+      <div class="section-header">
+        <span class="section-label gradient">All Updates</span>
+        <h1>全部动态</h1>
+        <div class="section-line"></div>
+      </div>
+
+      {{- /* Combined timeline — every post, grouped by year */ -}}
+      <div class="archive-outer">
+        {{- $byYear := $paginator.Pages.GroupByDate "2006" "desc" -}}
+        {{- range $byYear -}}
+          <section class="archive-section">
+            <div class="archive-year-wrap">
+              <span class="archive-year">{{ .Key }}</span>
+            </div>
+            <ul class="archive-items">
+              {{- range .Pages -}}
+                <li class="archive-item">
+                  <span class="archive-item-date">
+                    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "01-02" }}</time>
+                  </span>
+                  {{- $isAnnounce := in .Params.categories "公告" -}}
+                  <span class="update-dot {{ if $isAnnounce }}dot-announce{{ end }}"></span>
+                  <a class="archive-item-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+                  <span class="archive-item-badge {{ if $isAnnounce }}badge-announce{{ end }}">
+                    {{ if $isAnnounce }}公告{{ else }}博文{{ end }}
+                  </span>
+                </li>
+              {{- end -}}
+            </ul>
+          </section>
+        {{- else -}}
+          <div class="empty-state">
+            <p style="color: var(--color-text-tertiary); padding: var(--space-12);">还没有动态</p>
+          </div>
+        {{- end -}}
+      </div>
+
+      {{- partial "pagination.html" . -}}
+    </div>
+  </section>
+
+  <style>
+    .update-dot {
+      width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+      background: var(--color-brand-blue); opacity: 0.5;
+    }
+    .update-dot.dot-announce { background: var(--color-brand-purple); }
+    .archive-item-badge {
+      flex-shrink: 0; font-size: 11px; font-weight: 600;
+      padding: 2px 10px; border-radius: var(--radius-full);
+      background: rgba(59, 130, 246, 0.08); color: var(--color-brand-blue);
+    }
+    .archive-item-badge.badge-announce {
+      background: rgba(139, 92, 246, 0.08); color: var(--color-brand-purple);
+    }
+  </style>
+{{- end -}}

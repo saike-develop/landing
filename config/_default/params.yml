@@ -1,0 +1,192 @@
+########################################
+# 赛客实验室 Saike Lab — 站点参数
+########################################
+
+# 站点元信息
+author: Saike Lab
+email: ''
+description: '赛客实验室 Saike Lab — 中北大学工程训练中心 A301，聚焦网络安全与软件开发，探索技术的无限可能'
+keywords:
+  - 赛客实验室
+  - Saike Lab
+  - 网络安全
+  - 软件开发
+  - CTF
+  - 人工智能
+  - 开源
+
+# 品牌标语
+tagline:
+  zh: '想，全是问题；做，全是答案。'
+  en: 'Think. Question everything. Build. Turn ideas into reality.'
+
+# 导航菜单
+menu:
+  - name: posts
+    label: 博文
+    url: '/posts/'
+  - name: announcements
+    label: 公告
+    url: '/announcements/'
+  - name: friends
+    label: 赛友
+    url: '/friend/'
+  - name: join
+    label: 加入我们
+    url: '/#join'
+
+# 社交链接
+social:
+  github: https://github.com/saikelab
+  # email: mailto:saike@example.com
+
+# 主内容分区
+mainSections: ['posts']
+
+# 日期格式
+dateFormat: '2006-01-02'
+timeFormat: '2006-01-02 15:04:05'
+
+########################################
+# 视觉配置
+########################################
+
+# 布局
+layout:
+  max_width: 1200px
+
+########################################
+# 首页 Hero 配置
+########################################
+
+hero:
+  # 终端打字文本
+  terminal_lines:
+    - '$ whoami'
+    - 'saike'
+    - '$ cat /etc/motd'
+    - '想，全是问题；做，全是答案。'
+    - '$ ssh saike@lab'
+    - 'Connected. Welcome back.'
+  # Logo 图片路径 (static/ 下)
+  logo: 'logo.jpg'
+  # CTA 按钮
+  cta_text: '加入我们'
+  cta_url: '/#join'
+
+########################################
+# 关于我们
+########################################
+
+about:
+  title: 'Who We Are'
+  subtitle: '关于我们'
+  description: |
+    赛客实验室专注于网络安全、软件开发、人工智能与技术创新。
+    这里不是学习代码的地方，这里是想法发生的地方。
+  photo: 'images/lab.jpg'
+
+########################################
+# 研究方向
+########################################
+
+directions:
+  - key: sec
+    title: 'SEC'
+    subtitle: 'Cyber Security'
+    description: '漏洞分析 · CTF · AI 安全 · 渗透测试'
+    icon: 'shield-halved'
+    color: '#3B82F6'
+  - key: coding
+    title: 'CODING'
+    subtitle: 'Software Engineering'
+    description: '产品设计 · 全栈开发 · AI 应用 · 开源工具'
+    icon: 'code'
+    color: '#8B5CF6'
+
+########################################
+# 加入我们
+########################################
+
+join:
+  title: 'Ready to build something impossible?'
+  subtitle: '加入赛客实验室'
+  qrcode: 'qr-code.png'
+  description: '扫码加入招新群，了解更多信息'
+
+########################################
+# 页脚
+########################################
+
+footer:
+  since: 2024
+  powered: false
+  text: 'Fork your future. Commit your passion.'
+
+########################################
+# 文章列表
+########################################
+
+paginate:
+  posts: 10
+
+# 文章摘要
+summary:
+  enable: true
+  style: 'subtitle'
+
+########################################
+# 评论系统
+########################################
+
+comment:
+  enable: false
+
+########################################
+# 音乐播放器
+########################################
+
+player:
+  enable: false
+  aplayer:
+    enable: false
+    options:
+      fixed: true
+      autoplay: false
+      loop: all
+      order: list
+      preload: auto
+      volume: 0.7
+      mutex: true
+      listFolded: true
+      lrcType: 0
+      audio: []
+
+########################################
+# 动画
+########################################
+
+animation:
+  enable: true
+  # scroll-reveal 动画
+  scroll_reveal:
+    enable: true
+
+########################################
+# SEO / Open Graph
+########################################
+
+open_graph:
+  enable: true
+  options:
+    twitter_card: summary_large_image
+
+########################################
+# Injector — 自定义注入
+########################################
+
+injector:
+  head_begin: ''
+  head_end: ''
+  body_begin: ''
+  body_end: ''

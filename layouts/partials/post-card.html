@@ -1,0 +1,22 @@
+{{- $page := .page -}}
+
+<article class="post-card">
+  <a href="{{ $page.Permalink | relURL }}" class="post-card-inner" style="text-decoration: none;">
+    <div class="post-card-info">
+      {{- with $page.Params.categories -}}
+        <span class="post-card-category">{{ delimit . " · " | upper }}</span>
+      {{- end -}}
+      <h2 class="post-card-title">{{ $page.Title }}</h2>
+      {{- if $page.Params.description -}}
+        <p class="post-card-excerpt">{{ $page.Params.description | plainify }}</p>
+      {{- else if $page.Summary -}}
+        <p class="post-card-excerpt">{{ $page.Summary | plainify | truncate 150 }}</p>
+      {{- end -}}
+      <div class="post-card-meta">
+        {{- with $page.Params.author -}}<span>{{ . }}</span>{{- end -}}
+        <span>{{ $page.Date.Format "Jan 2, 2006" }}</span>
+        <span>{{ i18n "reading_time" $page.ReadingTime | default (printf "%d min read" $page.ReadingTime) }}</span>
+      </div>
+    </div>
+  </a>
+</article>

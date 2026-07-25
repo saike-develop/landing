@@ -1,0 +1,22 @@
+<!-- Join Section -->
+<section class="section section-alt" id="join">
+  <div class="reveal" style="max-width: 480px; margin: 0 auto; text-align: center;">
+    <span class="section-label">Join Us</span>
+    <h2 style="font-size: var(--text-4xl); font-weight: 700; margin: var(--space-4) 0 var(--space-6); letter-spacing: var(--tracking-tight);">
+      {{ .Site.Params.join.title | default "Ready to build something impossible?" }}
+    </h2>
+
+    <!-- QR Code -->
+    <div class="card" style="padding: var(--space-8); display: inline-block;">
+      {{- $qr := .Site.Params.join.qrcode | default "qr-code.png" -}}
+      <img src="{{ $qr | relURL }}" alt="招新群二维码" style="width: 200px; height: 200px; border-radius: var(--radius-lg); object-fit: cover; margin: 0 auto;" />
+      <p style="margin-top: var(--space-4); font-size: var(--text-sm); color: var(--color-text-tertiary);">
+        {{ .Site.Params.join.description | default "扫码加入招新群，了解更多信息" }}
+      </p>
+    </div>
+
+    <p style="margin-top: var(--space-8); font-size: var(--text-2xl); font-weight: 700; color: var(--color-text);">
+      一起探索无限可能
+    </p>
+  </div>
+</section>

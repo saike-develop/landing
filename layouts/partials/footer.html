@@ -1,0 +1,21 @@
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-inner">
+    <!-- Brand -->
+    <div class="footer-brand">
+      {{- $logo := .Site.Params.hero.logo | default "logo.jpg" -}}
+      <img src="{{ $logo | relURL }}" alt="SK Logo" width="24" height="24" />
+      <span>Saike Lab 赛客实验室</span>
+    </div>
+
+    <!-- Tagline -->
+    <p class="footer-tagline">
+      {{ .Site.Params.footer.text | default "Fork your future. Commit your passion." }}
+    </p>
+
+    <!-- Copyright -->
+    <div class="footer-copyright">
+      &copy; {{ .Site.Params.footer.since | default "2024" }}{{ if ne (now.Format "2006") (string .Site.Params.footer.since) }}-{{ now.Format "2006" }}{{ end }} Saike Lab
+    </div>
+  </div>
+</footer>

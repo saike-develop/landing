@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="{{ .Site.Language.Locale }}">
+  <head>
+    {{- if .Site.Params.injector.head_begin -}}
+      {{- .Site.Params.injector.head_begin | safeHTML -}}
+    {{- end -}}
+    {{- partial "head.html" . -}}
+    {{- if .Site.Params.injector.head_end -}}
+      {{- .Site.Params.injector.head_end | safeHTML -}}
+    {{- end -}}
+  </head>
+  <body>
+    {{- if .Site.Params.injector.body_begin -}}
+      {{- .Site.Params.injector.body_begin | safeHTML -}}
+    {{- end -}}
+
+    <!-- Navigation -->
+    {{- partial "header.html" . -}}
+
+    <!-- Main Content -->
+    <main>
+      {{- block "main" . }}{{ end -}}
+    </main>
+
+    <!-- Footer -->
+    {{- partial "footer.html" . -}}
+
+    <!-- JavaScript -->
+    {{- $js := resources.Get "js/main.js" -}}
+    {{- if eq hugo.Environment "production" -}}
+      {{- $js = $js | minify | fingerprint -}}
+    {{- end -}}
+    <script src="{{ $js.RelPermalink }}" {{ if eq hugo.Environment "production" }}integrity="{{ $js.Data.Integrity }}"{{ end }}></script>
+
+    {{- if .Site.Params.injector.body_end -}}
+      {{- .Site.Params.injector.body_end | safeHTML -}}
+    {{- end -}}
+  </body>
+</html>
