@@ -1,5 +1,5 @@
 /* ============================================
-   Editorial Post Cards
+   Post Cards (Responsive)
    ============================================ */
 
 .post-list {
@@ -8,11 +8,8 @@
   gap: var(--space-6);
 }
 
-@media (min-width: 768px) {
-  .post-list {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-8);
-  }
+@media (min-width: 640px) {
+  .post-list { grid-template-columns: 1fr 1fr; }
 }
 
 .post-card-inner {
@@ -21,10 +18,11 @@
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
-  padding: var(--space-8);
+  padding: var(--space-6);
   transition: transform 0.25s var(--ease-out),
               box-shadow 0.25s var(--ease-out),
               border-color 0.25s ease;
+  text-decoration: none;
 }
 
 .post-card-inner:hover {
@@ -33,15 +31,11 @@
   border-color: rgba(37, 99, 235, 0.2);
 }
 
-.post-card-info {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-}
+.post-card-info { display: flex; flex-direction: column; gap: var(--space-2); }
 
 .post-card-category {
   display: inline-block;
-  font-size: 11px;
+  font-size: var(--text-xs);
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -49,7 +43,7 @@
 }
 
 .post-card-title {
-  font-size: var(--text-2xl);
+  font-size: var(--text-xl);
   font-weight: 700;
   line-height: var(--leading-snug);
   letter-spacing: var(--tracking-tight);
@@ -57,7 +51,7 @@
 }
 
 .post-card-excerpt {
-  font-size: var(--text-base);
+  font-size: var(--text-sm);
   color: var(--color-text-secondary);
   line-height: var(--leading-relaxed);
   display: -webkit-box;
@@ -68,10 +62,10 @@
 
 .post-card-meta {
   display: flex;
-  gap: var(--space-4);
-  font-size: var(--text-sm);
+  gap: var(--space-3);
+  font-size: var(--text-xs);
   color: var(--color-text-tertiary);
   padding-top: var(--space-2);
   border-top: 1px solid var(--color-border);
-  margin-top: var(--space-1);
+  margin-top: auto;
 }
