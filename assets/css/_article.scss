@@ -79,7 +79,7 @@
 .article-body p { margin-bottom: 1.5em; }
 .article-body a { color: var(--color-blue); text-decoration: underline; text-underline-offset: 2px; }
 .article-body strong { color: var(--color-text); font-weight: 600; }
-.article-body img { max-width: 100%; border-radius: var(--radius-xl); margin: var(--space-6) auto; }
+.article-body img { max-width: 50%; border-radius: var(--radius-xl); margin: var(--space-6) auto; }
 .article-body ul, .article-body ol { padding-left: 1.5em; margin: var(--space-4) 0; }
 .article-body ul { list-style: disc; }
 .article-body ol { list-style: decimal; }
