@@ -50,15 +50,11 @@
 }
 
 .nav-links {
-  display: none;
+  display: flex;
   align-items: center;
   gap: 2px;
   margin-left: auto;
   margin-right: auto;
-}
-
-@media (min-width: 768px) {
-  .nav-links { display: flex; }
 }
 
 .nav-link {
